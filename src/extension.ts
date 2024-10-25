@@ -10,7 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
 		//Editor de vsc -> si no hay ningún editor abierto (no hay archivos abiertos), no hay nada que hacer.
 		const editor = vscode.window.activeTextEditor;
 		//Si el editor no está vacío termina el programa.
-		if (!editor) return;
+		if (!editor) {
+			return;
+		};
 
 		//Obtener el documento actual del editor
 		const document = editor.document;
