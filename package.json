@@ -1,7 +1,7 @@
 {
   "name": "toggle-comments-visibility",
   "displayName": "toggle-comments-visibility",
-  "description": "Extensión para ocultar y mostrar comentarios en el codigo",
+  "description": "Extensión para ocultar y mostrar comentarios en el código",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.94.0"
