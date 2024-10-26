@@ -66,19 +66,19 @@ export function activate(context: vscode.ExtensionContext) {
 		} else {
             let newText = document.getText(); //<- Recoger el texto actual
 
-			//Si los comentarios están ocultos, restaurarlos des del array
-			commentsArray.forEach(comment => {
+			//Si los comentarios están ocultos, restaurarlos des del final del documento al principio
+			commentsArray.slice().reverse().forEach(comment => {
 				const lineNumber = comment.position.line;//<- Obtener la linea donde insertar el comentario
-				const currentLine = newText.split('\n')[lineNumber];//<- Hacer un salto de linea para dejar espacio
+				const lines = newText.split('\n');//<- Dividir el texto en lineas
 
-				//Verificar si hay texto en la currentLine
-				if(currentLine.trim() === ''){
+				//Insertar el comentario en su posición de linea correspondiente
+				lines[lineNumber] = comment.text + (lines[lineNumber] || '');
+				
 
-					console.log(`Reinsertando comentario en la línea ${lineNumber + 1}:`, comment.text);
+				console.log(`Reinsertando comentario en la línea ${lineNumber + 1}:`, comment.text);
 
-					//Si en la linea actual no hay texto insertar el comentario
-					newText = newText.substring(0, comment.position.character) + comment.text + '\n' +newText.substring(comment.position.character);
-				}
+				//Actualizar newText con las lineas reintegradas
+				newText = lines.join('\n');
 			});
 
 			//Editar el documento para poner el nuevo texto con los comentarios reintegrados
