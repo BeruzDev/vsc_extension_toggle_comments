@@ -5,7 +5,27 @@ let commentsHidden = false;
 //Array de comentarios y sus respectivas posiciones
 let commentsArray: {text: string, position: vscode.Position, isEndOfLine: boolean }[] = [];
 
+//Guardar los comentarios para su persistencia aunque se cierre vsc
+//Guardar el array de comentarios en el almacenamiento global de vsc
+function saveCommentToStorage(context: vscode.ExtensionContext) {
+	context.globalState.update('commentsArray', commentsArray);
+}
+
+//Cargar el array de comentarios desde el almacenamiento global de vsc
+function loadCommentsFromStorage(context: vscode.ExtensionContext) {
+	const savedComments = context.globalState.get<{text: string, position: vscode.Position, isEndOfLine: boolean }[]>('commentsArray');
+	if(savedComments) {
+		commentsArray = savedComments.map(comment => ({
+			...comment,
+			position: new vscode.Position(comment.position.line, comment.position.character),
+		}));
+	}
+}
+
 export function activate(context: vscode.ExtensionContext) {
+	//Cargar comentarios al activar la extensión 
+	loadCommentsFromStorage(context);
+
 	//Creación del comando para mostrar o ocultar comentarios
 	const hideCommentsCommand = vscode.commands.registerCommand('extension.toggleComments', () => {
 		//Editor de vsc -> si no hay ningún editor abierto (no hay archivos abiertos), no hay nada que hacer.
@@ -112,6 +132,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 		//Alternar el estado de commentsHidden entre false y true según su valor actual
 		commentsHidden = !commentsHidden;
+
+		//Guardar el array actualizado en el almacenamiento global
+		saveCommentToStorage(context);
 	});
 
 	context.subscriptions.push(hideCommentsCommand);
