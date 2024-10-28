@@ -3,14 +3,14 @@ import * as vscode from 'vscode';
 //Control de visibilidad de los comentarios
 let commentsHidden = false;
 //Array de comentarios y sus respectivas posiciones
-let commentsArray: {text: string, position: vscode.Position }[] = [];
+let commentsArray: {text: string, position: vscode.Position, isEndOfLine: boolean }[] = [];
 
 export function activate(context: vscode.ExtensionContext) {
 	//Creación del comando para mostrar o ocultar comentarios
 	const hideCommentsCommand = vscode.commands.registerCommand('extension.toggleComments', () => {
 		//Editor de vsc -> si no hay ningún editor abierto (no hay archivos abiertos), no hay nada que hacer.
 		const editor = vscode.window.activeTextEditor;
-		//Si el editor no está vacío termina el programa.
+		//Si el editor está vacío termina el programa.
 		if (!editor) {
 			return;
 		};
@@ -33,8 +33,18 @@ export function activate(context: vscode.ExtensionContext) {
 			//Buscar comentarios de una linea "//" y añadirlos al array
 			while((match = singleLineComments.exec(text)) !== null){
 				const lineNumber = document.positionAt(match.index).line;//<-Linea donde se encuentra el comentario
+				const lineText = document.lineAt(lineNumber).text;//<- El texto que hay en esa linea
+				const isEndOfLine = lineText.trim().replace(match[0].trim(), '').trim() !== ''; //<- Verificar si hay código antes del comentario
+
 				console.log("Línea encontrada:", lineNumber);
-				commentsArray.push({ text: match[0], position: new vscode.Position(lineNumber, 0) });//<- Agregar el comentario y la posición al array
+				console.log("Texto en la linea encontrada: ", lineText);
+				console.log("Comprobar si va después de código: ", isEndOfLine);
+
+				commentsArray.push({
+					text: match[0],
+					position: new vscode.Position(lineNumber, 0),
+					isEndOfLine,//Guardar si el comentario estaba al final de una linea con código
+				});//<- Agregar el comentario, la posición al array y si esta o no al final de una linea con código
 			}
 
 			//Buscar comentarios de bloque "/* */" y añadirlos al array
@@ -42,12 +52,16 @@ export function activate(context: vscode.ExtensionContext) {
 				const startLine = document.positionAt(match.index).line;//<- Linea de inicio del bloque de comentario
 				const endLine = startLine + match[0].split('\n').length - 1;//<- Linea del final del bloque de comentario
 				console.log("Línea de inicio encontrada:", startLine + 1, "Línea de fin:", endLine + 1);
-				commentsArray.push({ text: match[0],  position: new vscode.Position(startLine, 0) });//<- Agregar el comentario y la posición al array
+				commentsArray.push({
+					text: match[0],
+					position: new vscode.Position(startLine, 0),
+					isEndOfLine: false, //<- los comentarios de bloque nunca están dentro de una linea
+				});//<- Agregar el comentario y la posición al array
 			}
 
 			console.log("Comentarios ocultados:", commentsArray.map(comment => ({
 				text: comment.text,
-				line: comment.position.line 
+				line: comment.position.line,
 			})));
 
 			//Eliminar los comentarios del texto para "ocultarlos"
@@ -71,9 +85,12 @@ export function activate(context: vscode.ExtensionContext) {
 				const lineNumber = comment.position.line;//<- Obtener la linea donde insertar el comentario
 				const lines = newText.split('\n');//<- Dividir el texto en lineas
 
-				//Insertar el comentario en su posición de linea correspondiente
-				lines[lineNumber] = comment.text + (lines[lineNumber] || '');
-				
+				//Si el comentario va después de código colocarlo
+				if(comment.isEndOfLine) {
+					lines[lineNumber] = lines[lineNumber].trimEnd() + ' ' + comment.text;//Al final de la linea de código
+				} else {
+					lines[lineNumber] = comment.text + (lines[lineNumber] || '');//Al inicio de la linea
+				}
 
 				console.log(`Reinsertando comentario en la línea ${lineNumber + 1}:`, comment.text);
 
