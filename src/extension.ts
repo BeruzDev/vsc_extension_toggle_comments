@@ -8,6 +8,7 @@ let commentsArray: {text: string, position: vscode.Position, isEndOfLine: boolea
 //Guardar los comentarios para su persistencia aunque se cierre vsc
 //Guardar el array de comentarios en el almacenamiento global de vsc
 function saveCommentToStorage(context: vscode.ExtensionContext) {
+	console.log("Guardando en storage: ", commentsArray);
 	context.globalState.update('commentsArray', commentsArray);
 }
 
@@ -19,6 +20,9 @@ function loadCommentsFromStorage(context: vscode.ExtensionContext) {
 			...comment,
 			position: new vscode.Position(comment.position.line, comment.position.character),
 		}));
+		console.log("Comentarios cargados desde storage: ", commentsArray);
+	} else {
+		console.log("No se encontraron comentarios en storage.");
 	}
 }
 
