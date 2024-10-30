@@ -1,15 +1,22 @@
-// 1 -> comentario simple
-const a = 10;
-const b = 25;
+// Base variables to calculate the volume
+const height = 12;
+const radius = 5;
 
-
-// 6 -> comentario simple
-function sumaNumeros(num1, num2) {
-    return num1+num2;
+// Function to calculate the area of a circle
+function calculateCircleArea(r) {
+    return Math.PI * r * r; // <- Circle area
 }
 
-/*  11 - 14 -> comentario
-en bloque
-de la linea 
-11 a la 14*/
-console.log(sumaNumeros(a, b)); //<- comentario lateral
+// Function to calculate the volume of a cylinder
+function calculateCylinderVolume(h, r) {
+    const baseArea = calculateCircleArea(r); // <- Cylinder base
+    return baseArea * h; // <- Cylinder height * base area
+}
+
+/* Prints the cylinder volume result 
+in the console with the specified 
+radius and height */
+console.log(
+    `The volume of the cylinder is:
+    ${calculateCylinderVolume(height, radius)}`
+);
