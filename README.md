@@ -25,6 +25,23 @@ No know issues at the moment.
 
 If you encounter any issues, please report them on the [GitHub repository issues page](https://github.com/BeruzDev/vsc_extension_toggle_comments/issues).
 
+## Contributions
+
+Contributions are welcome! If you would like to improve this extension or suggest new features, feel free to do so. You can follow these steps:
+
+1. **Fork the repository**: Clone the repository to your local machine.
+2. **Create a new branch**: Use `git checkout -b your-branch-name` to create a new branch where you will make your changes.
+3. **Make your changes**: Make the modifications you want.
+4. **Submit a pull request**: Once you're satisfied with your changes, submit a pull request for review.
+
+If you have suggestions, please open an [issue on my GitHub](https://github.com/BeruzDev/vsc_extension_toggle_comments/issues).
+
+## License
+
+This project is **open source** and can be modified and redistributed freely. However, ownership of the code remains with **BeruzDev**. Please give appropriate credit if you decide to use or modify this code.
+
+If you would like to use this project, please review the [terms and conditions of use](https://opensource.org/licenses) related to open source.
+
 ## Release Notes
 
 ### 1.0.0
@@ -83,6 +100,23 @@ Esta extensión consta de la siguiente configuración:
 No hay problemas conocidos hasta el momento.
 
 Si encuentras algún problema, por favor infórmalo en la [página de problemas del repositorio de GitHub](https://github.com/BeruzDev/vsc_extension_toggle_comments/issues).
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Si deseas mejorar esta extensión o sugerir nuevas características, siéntete libre de hacerlo. Puedes seguir los siguientes pasos:
+
+1. **Haz un fork del repositorio**: Clona el repositorio a tu máquina local.
+2. **Crea una nueva rama**: Usa `git checkout -b nombre-de-tu-rama` para crear una nueva rama donde harás tus cambios.
+3. **Realiza tus cambios**: Haz las modificaciones que desees.
+4. **Envía un pull request**: Una vez que estés satisfecho con tus cambios, envía un pull request para revisarlos.
+
+Si tienes sugerencias, por favor, abre un [issue en mi GitHub](https://github.com/BeruzDev/vsc_extension_toggle_comments/issues).
+
+## Licencia
+
+Este proyecto es de **código abierto** y se puede modificar y redistribuir libremente. Sin embargo, se mantiene la propiedad del código por parte de **BeruzDev**. Asegúrate de dar el crédito correspondiente si decides usar o modificar este código.
+
+Si deseas usar este proyecto, por favor revisa los [términos y condiciones de uso](https://opensource.org/licenses) relacionados con el uso de código abierto.
 
 ## Notas de la versión
 
