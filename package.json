@@ -1,8 +1,11 @@
 {
   "name": "toggle-comments-visibility",
-  "displayName": "toggle-comments-visibility",
-  "description": "Extensión para ocultar y mostrar comentarios en el código",
+  "displayName": "Toggle Comments Visibility",
+  "description": "Hide or Show Comments in Code",
   "version": "0.0.1",
+  "publisher": "BeruzDev",
+  "category": "Editor",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.94.0"
   },

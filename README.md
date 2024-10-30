@@ -32,8 +32,11 @@ If you encounter any issues, please report them on the [GitHub repository issues
 - Initial release of Toggle Comments Visibility
 - Allows users to hide and show comments with a custom keyboard shortcut (`Ctrl+K Ctrl+H`).
 
-
 ---
+
+## About the Developer
+
+I am a student and this is my first project created for my portfolio. I hope you find it useful!
 
 ## Following extension guidelines
 
