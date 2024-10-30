@@ -61,9 +61,9 @@ export function activate(context: vscode.ExtensionContext) {
 		//Obtener el texto actual del documento
 		const text = document.getText();
 
-		//Expresiones regulares para identificar comentarios "//" y "/* */"
-		const singleLineComments = /\/\/.*$/gm;//<-Todo lo que haya en la linea después de "//"
-		const blockComments = /\/\*[\s\S]*?\*\//gm;//<-Todo lo que haya entre  "/*" y "*/"
+		//Expresiones regulares para identificar comentarios
+		const singleLineComments = new RegExp('//.*$', 'gm');//<-Expresión regular para comentarios de una linea
+		const blockComments = new RegExp('\\/\\*[\\s\\S]*?\\*\\/', 'gm');//<-Expresión regular para comentarios en bloque
 
 		//Alterar la visibilidad
 		if(!commentsHidden){//<-si los comentarios son visibles
