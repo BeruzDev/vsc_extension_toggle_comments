@@ -10,6 +10,7 @@ let commentsArray: {text: string, position: vscode.Position, isEndOfLine: boolea
 function saveCommentToStorage(context: vscode.ExtensionContext) {
 	console.log("Guardando en storage: ", commentsArray);
 	context.globalState.update('commentsArray', commentsArray);
+	context.globalState.update('commentsHidden', commentsHidden); //<-Guardar el estado de visibilidad
 }
 
 //Cargar el array de comentarios desde el almacenamiento global de vsc
@@ -23,6 +24,12 @@ function loadCommentsFromStorage(context: vscode.ExtensionContext) {
 		console.log("Comentarios cargados desde storage: ", commentsArray);
 	} else {
 		console.log("No se encontraron comentarios en storage.");
+	}
+
+	//Cargar el estado de visibilidad
+	const savedHiddenState = context.globalState.get<boolean>('commentsHidden');
+	if(savedHiddenState !== undefined) {
+		commentsHidden = savedHiddenState;
 	}
 }
 
