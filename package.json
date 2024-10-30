@@ -6,6 +6,10 @@
   "engines": {
     "vscode": "^1.94.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BeruzDev/vsc_extension_toggle_comments"
+  },
   "categories": [
     "Other"
   ],
@@ -24,7 +28,18 @@
         "key": "ctrl+k ctrl+h",
         "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Toggle Comments Visibility",
+      "properties": {
+        "toggleComments.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the toggle comments visibility extension."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
