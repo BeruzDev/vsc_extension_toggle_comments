@@ -32,6 +32,16 @@ export function activate(context: vscode.ExtensionContext) {
 
 	//Creación del comando para mostrar o ocultar comentarios
 	const hideCommentsCommand = vscode.commands.registerCommand('extension.toggleComments', () => {
+		//Obtener la configuración de la extensión
+		const config = vscode.workspace.getConfiguration('toggleComments');
+		const isEnabled = config.get('enable'); //Obtener el valor del checkbox
+
+		//Verificar si la funcionalidad está habilitada
+		if(!isEnabled) {
+			vscode.window.showInformationMessage("La función de ocultar/mostrar comentarios está deshabilitada.");
+			return; //Si no está habilitada, salir de la función
+		}
+
 		//Editor de vsc -> si no hay ningún editor abierto (no hay archivos abiertos), no hay nada que hacer.
 		const editor = vscode.window.activeTextEditor;
 		//Si el editor está vacío termina el programa.
