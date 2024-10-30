@@ -64,7 +64,9 @@ The code is documented using the following types of comments:
 
 ## About the Developer
 
-I am a student and this is my first project created for my portfolio. I hope you find it useful!
+I am a student and this is my first project created for my [portfolio](https://albertcastroportfolio.netlify.app/). 
+
+I hope you find it useful!
 
 ## For more information
 
@@ -129,7 +131,9 @@ Si deseas usar este proyecto, por favor revisa los [términos y condiciones de u
 
 ## Sobre el Desarrollador
 
-Soy un estudiante con el ciclo de DAW recién terminado y este es mi primer proyecto creado para mi portafolio. ¡Espero que lo encuentres útil!
+Soy un estudiante con el ciclo de DAW recién terminado y este es mi primer proyecto creado para mi [portafolio](https://albertcastroportfolio.netlify.app/).
+
+¡Espero que te sea útil!
 
 ## Para más información
 
