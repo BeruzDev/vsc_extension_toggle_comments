@@ -68,11 +68,6 @@ I am a student and this is my first project created for my [portfolio](https://a
 
 I hope you find it useful!
 
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
 **Enjoy!**
 
 ---
@@ -134,10 +129,5 @@ Si deseas usar este proyecto, por favor revisa los [términos y condiciones de u
 Soy un estudiante con el ciclo de DAW recién terminado y este es mi primer proyecto creado para mi [portafolio](https://albertcastroportfolio.netlify.app/).
 
 ¡Espero que te sea útil!
-
-## Para más información
-
-* [Soporte de Markdown de Visual Studio Code](http://code.visualstudio.com/docs/languages/markdown)
-* [Referencia de Sintaxis de Markdown](https://help.github.com/articles/markdown-basics/)
 
 **¡Disfruta!**
