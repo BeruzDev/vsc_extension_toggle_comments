@@ -62,7 +62,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const text = document.getText();
 
 		//Expresiones regulares para identificar comentarios
-		const singleLineComments = new RegExp('//.*$', 'gm');//<-Expresión regular para comentarios de una linea
+		const singleLineComments = new RegExp('(?<!http:|https:)\\/\\/.*$', 'gm');//<-Expresión regular para comentarios de una linea
 		const blockComments = new RegExp('\\/\\*[\\s\\S]*?\\*\\/', 'gm');//<-Expresión regular para comentarios en bloque
 
 		//Alterar la visibilidad
